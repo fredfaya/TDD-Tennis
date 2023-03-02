@@ -7,7 +7,12 @@ import com.tdd.tennis.exceptions.NullPlayerException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class PartieTest {
     @Test
     public void givenNullPlayersShouldThrowException(){
@@ -85,6 +90,60 @@ public class PartieTest {
         //then
         assertThat(partie.getScoreSetOfPlayer1()).isEqualTo(0);
         assertThat(partie.getScoreSetOfPlayer2()).isEqualTo(0);
+    }
+
+    @Test
+    public void checkGameStateShouldReturnPlayer1WinsWhenOnePlayer1Has2Sets() throws NullPlayerException {
+        //given
+        Player player1 = new Player();
+        Player player2 = new Player();
+        Partie partie = new Partie(player1, player2);
+        //when
+        player1.setNbSets(2);
+        GameStatus gameStatus = partie.checkGameStatus();
+        //then
+        Assertions.assertEquals(GameStatus.PLAYER1WIN, gameStatus);
+    }
+
+    @Test
+    public void checkGameStateShouldReturnPlayer2WinsWhenOnePlayer2Has2Sets() throws NullPlayerException {
+        //given
+        Player player1 = new Player();
+        Player player2 = new Player();
+        Partie partie = new Partie(player1, player2);
+        //when
+        player2.setNbSets(2);
+        GameStatus gameStatus = partie.checkGameStatus();
+        //then
+        Assertions.assertEquals(GameStatus.PLAYER2WIN, gameStatus);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1})
+    public void checkGameStateShouldReturnProgressWhenOnePlayersHasLessThan2Sets(int nbSet) throws NullPlayerException {
+        //given
+        Player player1 = new Player();
+        Player player2 = new Player();
+        Partie partie = new Partie(player1, player2);
+        //when
+        player1.setNbSets(nbSet);
+        player2.setNbSets(nbSet);
+        GameStatus gameStatus = partie.checkGameStatus();
+        //then
+        Assertions.assertEquals(GameStatus.PROGRESS, gameStatus);
+    }
+
+    @Test
+    public void getExchangeWinnerShouldReturnPlayerWithScorePlus1WhenPlayerWins() throws NullPlayerException {
+        //given
+        Player player1 = new Player();
+        Player player2 = new Player();
+        Partie partie = new Partie(player1, player2);
+        //when
+        Object result = partie.getExchangeWinner();
+        //then
+        assertTrue(result instanceof Player);
+        Assertions.assertEquals(1,((Player) result).getPoints());
     }
 
 }
