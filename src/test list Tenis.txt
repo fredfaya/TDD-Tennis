@@ -1,0 +1,41 @@
+
+
+Test de Arbitre :
+
+	- Un Arbitre qui a une partie nulle lance une exception
+	- Un Arbitre qui a une partie non nulle ne doit pas lancer une exception
+	- Un Arbitre qui a 2 joueurs non nuls non nulle ne doit pas lancer une exception
+	- un joueur qui gagne un premier point augmente son score de 15
+	- un joueur qui gagne un deuxieme point augmente son score de 15
+	- un joueur qui gagne un troisieme point augmente son score de 10
+	- Un joueur qui gagne un quatrieme point gagne le jeu sans egalite de 40
+	- Si un joueur gagne un point avec une egalite de 40, alors un il gagne un avantage
+	- Si on a pas une egalite de 40 alors personne ne gagne l'avantage
+	- Si un joueur gagne un point avec une egalite de 40 mais l'autre a l'avantage, alors il ne gagne pas un avantage
+	- Si un joueur perd un point avec un avantage, alors il perd un avantage
+	- Si un joueur gagne un point avec un avantage, alors il gagne le jeu
+	- Si un joueur gagne un jeu, alors tout les scores reviennent a 0
+	- Si un joueur gagne un deuxieme jeu, alors son nombre de jeu gagne s'incremente, ainsi de suite
+	- Si un joueur gagne 6 jeu et le deuxieme a moins de 4 jeux alors il gagne un set
+	- Si un joueur gagne 6 jeu et le deuxieme a plus de 4 jeux alors il ne gagne pas un set
+	- Si un joueur gagne 7 jeu et le deuxieme a 5 jeux alors il gagne un set
+	- Si les 2 joueurs ont 6 jeux gagnes alors on change le mode de comptage
+	- Si les 2 joueurs n'ont pas 6 jeux gagnes alors on ne change pas le mode de comptage
+	- Si un set est gagne alors on rechange le mode de comptage
+	- Si on est dans le jeu decisif et si un joueur gagne un point alors son score augmente de 1
+	- Si on est dans le jeu decisif et si un joueur gagne 2 points d'avance alors il gagne le set
+	- Si un des joueur est a 7 et l'autre a 6, alors le joueur a 7 points gagne le set
+	- Si un joueur gagne 2 sets alors il gagne la partie
+		
+
+
+Test de Partie :
+
+	- une partie qui contient 2 joueurs null lance une exception
+	- une partie qui contient un des 2 joueurs null lance une exception
+	- une partie qui contient 2 joueurs non null ne lance pas une exception
+	- quand une partie est initialisee, les scores, le nombre de jeux gagnes, les nombre de sets sont initialises a 0
+	- quand un des 2 joueurs a 2 sets gagnes, alors la partie est terminée
+	- si aucun des 2 joueurs n'a 2 sets gagnes alors la partie est toujours en cours
+	- la fonction getExchangeWinner doit nous retourner un joueur avec son score augmente suivant les regles
+	

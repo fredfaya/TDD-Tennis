@@ -120,7 +120,7 @@ public class PartieTest {
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1})
-    public void checkGameStateShouldReturnProgressWhenOnePlayersHasLessThan2Sets(int nbSet) throws NullPlayerException {
+    public void checkGameStateShouldReturnProgressWhenPlayersHasLessThan2Sets(int nbSet) throws NullPlayerException {
         //given
         Player player1 = new Player();
         Player player2 = new Player();

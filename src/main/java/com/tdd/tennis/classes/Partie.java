@@ -72,22 +72,6 @@ public class Partie {
         player2.setDecisivePoints(nbPoints);
     }
 
-    public void setScoreSetPlayer1(int nbSets) {
-        player1.setNbSets(nbSets);
-    }
-
-    public void setScoreSetPlayer2(int nbSets) {
-        player2.setNbSets(nbSets);
-    }
-
-    public void setScorePointsPlayer1(int points) {
-        player1.setPoints(points);
-    }
-
-    public void setScorePointsPlayer2(int points) {
-        player2.setPoints(points);
-    }
-
     public void setAdvantagePlayerOne(boolean ad){
         player1.setAdvantaged(ad);
     }
