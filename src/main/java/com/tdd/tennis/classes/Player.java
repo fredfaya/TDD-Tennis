@@ -10,6 +10,7 @@ public class Player {
     private int nbSets;
 
     private boolean isAdvantaged;
+    private int decisivePoints;
 
     public Player() {
         points = 0;
@@ -17,6 +18,7 @@ public class Player {
         nbGames = 0;
         nbSets = 0;
         isAdvantaged = false;
+        decisivePoints = 0;
     }
 
     public int getPoints() {
@@ -31,6 +33,7 @@ public class Player {
         if (!this.isAdvantaged){
             this.points = 0;
             this.score = 0;
+            this.decisivePoints = 0;
         }
     }
 
@@ -50,7 +53,7 @@ public class Player {
     }
 
     public void setNbGames(int nbGames) {
-        this.nbGames = nbGames;
+        this.nbGames = (nbGames + this.getNbGames()) % 8;
     }
 
     public int getNbSets() {
@@ -58,7 +61,7 @@ public class Player {
     }
 
     public void setNbSets(int nbSets) {
-        this.nbSets = nbSets;
+        this.nbSets = (this.nbSets + nbSets) % 3;
     }
 
     public boolean isAdvantaged() {
@@ -80,5 +83,13 @@ public class Player {
     @Override
     public int hashCode() {
         return Objects.hash(points, score, nbGames, nbSets);
+    }
+
+    public int getDecisivePoints() {
+        return decisivePoints;
+    }
+
+    public void setDecisivePoints(int decisivePoints) {
+        this.decisivePoints = (this.decisivePoints + decisivePoints) % 8;
     }
 }

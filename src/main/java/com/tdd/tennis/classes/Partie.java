@@ -57,29 +57,44 @@ public class Partie {
         player2.setScore(score);
     }
     public void setScoreGamesPlayer1(int nbGames) {
-        player1.setScore(nbGames);
+        player1.setNbGames(nbGames);
     }
 
     public void setScoreGamesPlayer2(int nbGames) {
-        player2.setScore(nbGames);
+        player2.setNbGames(nbGames);
+    }
+
+    public void setDecisiveScorePlayer1(int nbPoints) {
+        player1.setDecisivePoints(nbPoints);
+    }
+
+    public void setDecisiveScorePlayer2(int nbPoints) {
+        player2.setDecisivePoints(nbPoints);
     }
 
     public void setScoreSetPlayer1(int nbSets) {
-        player1.setScore(nbSets);
+        player1.setNbSets(nbSets);
     }
 
     public void setScoreSetPlayer2(int nbSets) {
-        player2.setScore(nbSets);
+        player2.setNbSets(nbSets);
     }
 
     public void setScorePointsPlayer1(int points) {
-        player1.setScore(points);
+        player1.setPoints(points);
     }
 
     public void setScorePointsPlayer2(int points) {
-        player2.setScore(points);
+        player2.setPoints(points);
     }
 
+    public void setAdvantagePlayerOne(boolean ad){
+        player1.setAdvantaged(ad);
+    }
+
+    public void setAdvantagePlayerTwo(boolean ad){
+        player2.setAdvantaged(ad);
+    }
     public GameStatus checkGameStatus() {
         if (player1.getNbSets() == 2)
             return GameStatus.PLAYER1WIN;
@@ -104,5 +119,18 @@ public class Partie {
     public void resetScores(){
         player1.resetScore();
         player2.resetScore();
+    }
+
+    public boolean isDecisive() {
+        if (player1.getNbGames() == 6 && player2.getNbGames() == 6) return true;
+        return false;
+    }
+
+    public void setScoreSetOfPlayer1(int i) {
+        player1.setNbSets(i);
+    }
+
+    public void setScoreSetOfPlayer2(int i) {
+        player2.setNbSets(i);
     }
 }
